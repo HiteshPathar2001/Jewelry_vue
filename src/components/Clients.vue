@@ -13,72 +13,36 @@
             <div class="row d_flex">
                <div class="col-md-10 offset-col-md-1">
                   <div id="myCarousel" class="carousel slide clients_slider" data-ride="carousel">
-                     <ol class="carousel-indicators">
+                     <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class=""></li>
                         <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                     </ol>
+                     </ol> -->
                      <div class="carousel-inner">
-                        <div class="carousel-item active carousel-item-left">
+                        <carousel :autoplay="true" :loop="true" :perPage="1" :pagenation="true">
+                           <slide v-for="(client,key) in clients" :key="key">
+                        <div class="carousel-item active">
                            <div class="container">
                               <div class="carousel-caption">
                                  <div class="row d_flex">
                                     <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 pa_rile">
                                        <div class="img_box">
                                           <i><img src="../assets/images/icon_1.png" alt="#"></i>
-                                          <figure><img src="../assets/images/clients.png" alt="#"></figure>
+                                          <figure><img :src="require(`@/assets/images/${client.imgPath}`)" alt="blog image"></figure>
                                        </div>
                                     </div>
                                     <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 pa_rile">
                                        <div class="joe">
-                                          <h3>Joe elik</h3>
-                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as</p>
+                                          <h3>{{client.name}}</h3>
+                                          <p>{{client.desc}}</p>
                                        </div>
                                     </div>
                                  </div>
                               </div>
                            </div>
                         </div>
-                        <div class="carousel-item carousel-item-next carousel-item-left">
-                           <div class="container">
-                              <div class="carousel-caption">
-                                 <div class="row d_flex">
-                                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 pa_rile">
-                                       <div class="img_box">
-                                          <i><img src="../assets/images/icon_1.png" alt="#"></i>
-                                          <figure><img src="../assets/images/clients.png" alt="#"></figure>
-                                       </div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 pa_rile">
-                                       <div class="joe">
-                                          <h3>Joe elik</h3>
-                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container">
-                              <div class="carousel-caption">
-                                 <div class="row d_flex">
-                                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 pa_rile">
-                                       <div class="img_box">
-                                          <i><img src="../assets/images/icon_1.png" alt="#"></i>
-                                          <figure><img src="../assets/images/clients.png" alt="#"></figure>
-                                       </div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 pa_rile">
-                                       <div class="joe">
-                                          <h3>Joe elik</h3>
-                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                           </slide>
+                        </carousel>
                      </div>
                      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -96,7 +60,34 @@
       <!-- end clients -->
 </template>
 <script>
-
+import { Carousel, Slide } from "vue-carousel";
+export default {
+  components: {
+    Carousel,
+    Slide,
+  },
+  data () {
+     return {
+        clients:[
+           {
+              name:"Joi",
+              desc:"It is a long established fact that a reader will be distracted",
+              imgPath:"clients.png"
+           },
+           {
+              name:"Joi",
+              desc:"It is a long established fact that a reader will be dist",
+              imgPath:"clients.png"
+           },
+           {
+              name:"Joi",
+              desc:"It is a long established fact that a reader will be distracted",
+              imgPath:"clients.png"
+           },
+        ]
+     }
+  }
+}
 </script>
 <style scoped>
 
